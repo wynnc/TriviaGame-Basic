@@ -1,0 +1,14 @@
+body{
+    background-color: darksalmon;
+    text-align: center;
+}
+
+#main{
+    background-color: lightpink;
+    
+}
+
+input[type="radio"]{
+    margin: 0 10px 0 10px;
+  }
+

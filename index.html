@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+
     <title>Trivia Game</title>
 </head>
 
@@ -20,10 +22,17 @@
                 </div>
             </div>
         </div>
-        <div class="btn btn-primary btn-lg" id="startBtn">Start</div>
-        <div id="timeRemaining"></div>
-        <form id="triviaQuestions">
-        </form>
+        <section id="main">
+            <div class="row start">
+                <div class="col-md">
+                    <div class="btn btn-primary btn-lg" id="startBtn">Start</div>
+                </div>
+            </div>
+
+            <div id="timeRemaining"></div>
+            <div id="triviaQuestions">
+            </div>
+        </section>
         <!-- <div class="row game">
             <div class="col-md">
                 <div class="question">She helped create the beginnings of Bluetooth and Wifi technology?</div>

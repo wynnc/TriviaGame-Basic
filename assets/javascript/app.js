@@ -1,16 +1,15 @@
 // Global Variables
-var number = 5;
+var number = 20;
 var intervalId;
 var correctAnswer = 0;
 var incorrectAnwer = 0;
 var unanswered = 0;
 
-// When timer is up run function to check which answers are correct and populate above// Another option is to check if on selection determine if answers are correct
 
 // on page load start button
 // array of objects for question, answer to check when timer completes, answer options
 
-// create a function to check answer to user selection to calculate score
+
 // when time expires print All Done!; correct answers; incorrect answers; unanswered
 var questions = [
     {
@@ -25,6 +24,7 @@ var questions = [
     }
 ]
 
+// create a function to check answer to user selection to calculate score
 function renderQuestions() {
     $("#timeRemaining").text()
     for (var i = 0; i < questions.length; i++) {
@@ -42,6 +42,7 @@ function renderQuestions() {
     $("#btn").append(`<button class='btn btn-primary btn-lg' id=submitBtn>Submit</button>`);
 }
 
+// when start button is clicked call renderQuestions();
 $("#startBtn").on("click", function () {
     // event.preventDefault();
     $(".start").empty();
@@ -50,7 +51,9 @@ $("#startBtn").on("click", function () {
 
 })
 
+// when submit button is clicked the clear screen and calculate score.
 $("#submitBtn").on("click", function () {
+    alert("you clicked submit");
     calculateScore();
 })
 
@@ -70,9 +73,12 @@ function decrement() {
     }
 }
 
+
 function stop() {
     clearInterval(intervalId);
 }
+
+// When timer is up run function to check which answers are correct and populate above// Another option is to check if on selection determine if answers are correct
 
 function calculateScore() {
     for (var i = 0; i < questions.length; i++) {
@@ -89,17 +95,23 @@ function calculateScore() {
 
     }
 
-    populateScrene();
+    populateScreen();
 }
 
-function populateScrene() {
+// clear time div, questions and print correct answers, incorrect answers and unanswered counts.
+function populateScreen() {
     $("#timeRemaining").empty();
     $("#triviaQuestions").empty();
     $("#btn").empty();
+
+    $("#allDone").html("<h3>All Done!</h3>");
+
     var newDiv = $("<div>");
-    newDiv.attr("id", "doneMessage");
-    newDiv.text("All Done!");
+    newDiv.attr("id", "correctAnswers");
+    newDiv.text("Correct Answers: " + correctAnswer);
     $("#allDone").append(newDiv);
+
+    $("#allDone").append(`<div id=incorrectAnswers>Incorrect Answers: ${incorrectAnwer}</div>`);
+   
 }
 
-// once answer is retrieved compare it to array of objects answer by index number. if correct then add to correct count if incorrect add it to incorrect count if userAnswer is undefined then add it to unanswered count.

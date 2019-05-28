@@ -1,6 +1,9 @@
 // Global Variables
 var number = 5;
 var intervalId;
+var correctAnswer = 0;
+var incorrectAnwer = 0;
+var unanswered = 0;
 
 // When timer is up run function to check which answers are correct and populate above// Another option is to check if on selection determine if answers are correct
 
@@ -47,6 +50,10 @@ $("#startBtn").on("click", function () {
 
 })
 
+$("#submitBtn").on("click", function () {
+    calculateScore();
+})
+
 // create a function to create timer and display timer to start when user clicks starts
 function run() {
     intervalId = setInterval(decrement, 1000);
@@ -70,9 +77,29 @@ function stop() {
 function calculateScore() {
     for (var i = 0; i < questions.length; i++) {
         var userInput = ($(`input[name='question-${i}']:checked`).val())
-        console.log(userInput);
+        if (userInput === questions[i].answer) {
+            correctAnswer++;
+        } else if (!userInput === questions[i].answer) {
+            incorrectAnswer++;
+        } else {
+            unanswered++;
+        }
+        // console.log(userInput);
+        // console.log(questions[i].answer);
 
     }
+
+    populateScrene();
+}
+
+function populateScrene() {
+    $("#timeRemaining").empty();
+    $("#triviaQuestions").empty();
+    $("#btn").empty();
+    var newDiv = $("<div>");
+    newDiv.attr("id", "doneMessage");
+    newDiv.text("All Done!");
+    $("#allDone").append(newDiv);
 }
 
 // once answer is retrieved compare it to array of objects answer by index number. if correct then add to correct count if incorrect add it to incorrect count if userAnswer is undefined then add it to unanswered count.

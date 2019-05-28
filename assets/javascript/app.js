@@ -1,5 +1,5 @@
 // Global Variables
-var number = 120;
+var number = 5;
 var intervalId;
 
 // When timer is up run function to check which answers are correct and populate above// Another option is to check if on selection determine if answers are correct
@@ -30,7 +30,7 @@ function renderQuestions() {
         newPar.text(questions[i].question);
         newDiv.append(newPar);
         questions[i].options.forEach(function (option) {
-            newDiv.append(`<input id=radioBtn type=radio name=question-${i} value=${option}>${option}</input>`);
+            newDiv.append(`<input type=radio name=question-${i} value="${option}">${option}</input>`);
 
 
         })
@@ -55,14 +55,24 @@ function decrement() {
     number--;
 
     $("#timeRemaining").html("<h3>Time Remaining: " + number + "</h3>");
-    
+
     if (number === 0) {
+        stop();
         calculateScore();
     }
 }
 
-function calculateScore(){
-    for(var i = 0; i < questions.length; i++){
+function stop() {
+    clearInterval(intervalId);
+}
 
+function calculateScore() {
+    for (var i = 0; i < questions.length; i++) {
+        console.log($('input[i]').val());
+        // userAnswer = $('name="question-"+i');
+        // var answerName = "question-" + i;
+        // console.log(answerName);
+        // var userInput = $('input[name="question-0"]:checked').val();
+        // console.log(userInput);
     }
 }

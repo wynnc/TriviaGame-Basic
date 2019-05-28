@@ -36,6 +36,7 @@ function renderQuestions() {
         })
         $("#triviaQuestions").append(newDiv);
     }
+    $("#btn").append(`<button class='btn btn-primary btn-lg' id=submitBtn>Submit</button>`);
 }
 
 $("#startBtn").on("click", function () {
@@ -68,11 +69,10 @@ function stop() {
 
 function calculateScore() {
     for (var i = 0; i < questions.length; i++) {
-        console.log($('input[i]').val());
-        // userAnswer = $('name="question-"+i');
-        // var answerName = "question-" + i;
-        // console.log(answerName);
-        // var userInput = $('input[name="question-0"]:checked').val();
-        // console.log(userInput);
+        var userInput = ($(`input[name='question-${i}']:checked`).val())
+        console.log(userInput);
+
     }
 }
+
+// once answer is retrieved compare it to array of objects answer by index number. if correct then add to correct count if incorrect add it to incorrect count if userAnswer is undefined then add it to unanswered count.

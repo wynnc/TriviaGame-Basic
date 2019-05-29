@@ -18,7 +18,7 @@ var questions = [
         options: ["Betty Davis", "Hedy Lamarr", "Betty Boop", "Rita Hayworth"]
     },
     {
-        question: "This Arkansas native relocated to Denver, started a coding bootcamp and got a programming job within six months? (aka serious bad ass!!!)",
+        question: "This Arkansas native relocated to Denver, started a coding bootcamp and got a programming job within six months?",
         answer: "Grace Gude",
         options: ["Grace Gude", "Maya Angelou", "Jenny Delony", " Mary Elizabeth Smith Massey"]
     },

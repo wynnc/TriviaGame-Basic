@@ -1,8 +1,8 @@
 // Global Variables
-var number = 20;
+var number = 30;
 var intervalId;
 var correctAnswer = 0;
-var incorrectAnwer = 0;
+var incorrectAnswer = 0;
 var unanswered = 0;
 
 
@@ -18,10 +18,31 @@ var questions = [
         options: ["Betty Davis", "Hedy Lamarr", "Betty Boop", "Rita Hayworth"]
     },
     {
-        question: "2-This Hollywood actress helped create the beginnings of Bluetooth and Wifi technology?",
-        answer: "Hedy Lamarr",
-        options: ["Betty Davis", "Betty Boop", "Rita Hayworth", "Hedy Lamarr"]
-    }
+        question: "This Arkansas native relocated to Denver, started a coding bootcamp and got a programming job within six months? (aka serious bad ass!!!)",
+        answer: "Grace Gude",
+        options: ["Grace Gude", "Maya Angelou", "Jenny Delony", " Mary Elizabeth Smith Massey"]
+    },
+    {
+        question: "This mathematician and writer is known as the first computer programmer?",
+        answer: "Ada Lovelace",
+        options: ["Mary Somerville", "Emmy Noether", "Ada Lovelace", "Sophie Germain"]
+    },
+
+    {
+        question: "This mathematician, educator and improve Queen is known for training the next wave of women coders?",
+        answer: "Sarah Cullen",
+        options: ["Mary Somerville", "Sarah Cullen", "Sofia Kovalevskaya", "Sophie Germain"]
+    },
+    {
+        question: "This Naval officer was the first person to design a compiler for a programming language?",
+        answer: "Grace Hopper",
+        options: ["Grace Hopper", "Gretchen Herbert", "Roberta Hazard", "Lillian Fishburne"]
+    },
+    {
+        question: "This Full Stack Programmer is a mother of a toddler, graduate of Galvanized and an educator for future programmers?",
+        answer: "Lindsay Chapin",
+        options: ["Diana Prince", "Hope Solo", "Jane Smith", "Lindsay Chapin"]
+    },
 ]
 
 // create a function to check answer to user selection to calculate score
@@ -39,7 +60,7 @@ function renderQuestions() {
         })
         $("#triviaQuestions").append(newDiv);
     }
-    $("#btn").append(`<button class='btn btn-primary btn-lg' id=submitBtn>Submit</button>`);
+    $("#btn").append(`<button class='btn btn-primary btn-lg' id=submitBtn onclick=submitClick();>Submit</button>`);
 }
 
 // when start button is clicked call renderQuestions();
@@ -52,10 +73,7 @@ $("#startBtn").on("click", function () {
 })
 
 // when submit button is clicked the clear screen and calculate score.
-$("#submitBtn").on("click", function () {
-    alert("you clicked submit");
-    calculateScore();
-})
+
 
 // create a function to create timer and display timer to start when user clicks starts
 function run() {
@@ -85,11 +103,17 @@ function calculateScore() {
         var userInput = ($(`input[name='question-${i}']:checked`).val())
         if (userInput === questions[i].answer) {
             correctAnswer++;
-        } else if (!userInput === questions[i].answer) {
-            incorrectAnswer++;
-        } else {
+        } else if (userInput === undefined){
             unanswered++;
+        } else {
+            incorrectAnswer++;
         }
+        // } else if (userInput !== questions[i].answer) {
+          
+        //     incorrectAnswer++;
+        // } else {
+        //     unanswered++;
+        // }
         // console.log(userInput);
         // console.log(questions[i].answer);
 
@@ -111,7 +135,14 @@ function populateScreen() {
     newDiv.text("Correct Answers: " + correctAnswer);
     $("#allDone").append(newDiv);
 
-    $("#allDone").append(`<div id=incorrectAnswers>Incorrect Answers: ${incorrectAnwer}</div>`);
-   
+    $("#allDone").append(`<div id=incorrectAnswers>Incorrect Answers: ${incorrectAnswer}</div>`);
+    $("#allDone").append(`<div id=unanswered>Unanswered: ${unanswered}</div>`);
+
 }
 
+function submitClick () {
+    // alert("you clicked submit");
+    stop();
+    // console.log("checking");
+    calculateScore();
+}
